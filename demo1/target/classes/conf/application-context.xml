@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="duke" class="com.st.Juggler">
+        <constructor-arg value="15"/>
+    </bean>
+    
+    <bean id="tom" class="com.st.Juggler">
+        <property name="beanBags" value="12"/>
+    </bean>
+
+    <bean id="poeticDuke" class="com.st.PoeticJuggler">
+        <constructor-arg index="1" ref="poem"/>
+        <constructor-arg index="0" value="15"/>
+    </bean>
+
+    <bean id="jack" class="com.st.PoeticJuggler">
+        <constructor-arg index="0" value="15"/>
+        <constructor-arg index="1">
+            <bean class="com.st.Sonnet29"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="poem" class="com.st.Sonnet29"/>
+
+    <bean id="stage" class="com.st.Stage" factory-method="getInstance"/>
+
+</beans>
